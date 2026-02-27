@@ -2,8 +2,7 @@
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
@@ -546,13 +545,99 @@ img {
     0 2px 1px 0 rgba(0, 0, 0, 0.2);
   background: #fcfcfc;
 }
-.modal-par {
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  fill: #fff;
+  background: #404bbf;
+  border-radius: 100%;
+}
+.mdl-par {
   font:
     500 16px / 1.5 "Roboto",
     sans-serif;
   letter-spacing: 0.02em;
   text-align: center;
   color: #2e2f42;
+  display: flex;
+  margin: 72px 24px 16px 24px;
 }
-
+.label-form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 4px;
+  width: 360px;
+  height: 336px;
+  margin: auto;
+}
+.form-name {
+}
+.name-label {
+  font:
+    400 12px / 1.16667 "Roboto",
+    sans-serif;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
+  display: block;
+  margin-bottom: 4px;
+}
+.name-wrapper {
+  margin-bottom: 8px;
+}
+.name-input {
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  width: 360px;
+  height: 40px;
+  padding-left: 38px;
+}
+.icon-person {
+  position: absolute;
+  top: 138px;
+  left: 40px;
+}
+.icon-phone {
+  position: absolute;
+  top: 204px;
+  left: 40px;
+}
+.icon-email {
+  position: absolute;
+  top: 270px;
+  left: 40px;
+}
+.text-input {
+  font:
+    400 12px / 1.16 "Roboto",
+    sans-serif;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+  padding-left: 16px;
+  padding-top: 8px;
+}
+.text-wrapper {
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  width: 360px;
+  height: 120px;
+}
 /* #endregion */
