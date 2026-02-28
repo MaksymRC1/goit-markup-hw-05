@@ -530,6 +530,14 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+ opacity: 0;
+visibility: hidden;
+pointer-events: none;
+
+}
+.backdrop.is-open{ opacity: 1;
+visibility: visible;
+pointer-events: auto;
 }
 .modal {
   position: absolute;
@@ -559,8 +567,8 @@ img {
   align-items: center;
   justify-content: center;
   transition:
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
 }
 .modal-close-btn:hover,
 .modal-close-btn:focus {
@@ -591,6 +599,12 @@ img {
 }
 .form-name {
 }
+.name-input:hover,
+.name-input:focus + .icon-phone{fill: #4d5ae5;}
+.name-input:hover,
+.name-input:focus + .icon-email{fill: #4d5ae5;}
+.name-input:hover,
+.name-input:focus +.icon-person{fill: #4d5ae5;}
 .name-label {
   font:
     400 12px / 1.16667 "Roboto",
@@ -609,21 +623,25 @@ img {
   width: 360px;
   height: 40px;
   padding-left: 38px;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon-person {
   position: absolute;
   top: 138px;
   left: 40px;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon-phone {
   position: absolute;
   top: 204px;
   left: 40px;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon-email {
   position: absolute;
   top: 270px;
   left: 40px;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .text-input {
   font:
@@ -637,7 +655,87 @@ img {
 .text-wrapper {
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
+  resize: none;
   width: 360px;
   height: 120px;
 }
+.hidden-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.checkbox-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  cursor: pointer;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.hidden-checkbox:checked + .checkbox-visual .check-icon {
+  display: block;
+  border-radius: 2px;
+  background-color: #404bbf;
+  border: none;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hidden-checkbox:checked + .checkbox-visual {
+  background-color: #404bbf;
+  border: none;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.check-icon {
+  display: none;
+  width: 10px;
+  height: 8px;
+  fill: #f4f4fd;
+}
+.policy-txt {
+  font:
+    400 12px / 1.16 "Roboto",
+    sans-serif;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
+}
+.policy {
+  font:
+    400 12px / 1.33 "Roboto",
+    sans-serif;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #4d5ae5;
+}
+.modal-button{
+display: flex;
+align-items: flex-start;
+justify-content: space-around;
+cursor: pointer;
+border-radius: 4px;
+padding: 16px 32px;
+width: 169px;
+height: 56px;
+box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+background: #4d5ae5;
+font: 500 16px / 1.5 "Roboto", sans-serif;
+letter-spacing: 0.04em;
+color: #fff;
+display: flex;
+padding: 16px 32px;
+position: absolute;
+left: 119px;
+bottom: 24px;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* #endregion */
