@@ -2,7 +2,6 @@
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
-
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
@@ -51,6 +50,8 @@ Single-colored icons can be modified like so:
 
   --font-family: "Roboto", sans-serif;
   --second-family: "Raleway", sans-serif;
+
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *,
@@ -177,7 +178,7 @@ img {
   padding: 24px 0;
   display: block;
   position: relative;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 
 .nav-link:hover,
@@ -212,7 +213,7 @@ img {
   font-style: normal;
   padding: 24px 0;
   display: block;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 
 .contact-link:hover,
@@ -263,7 +264,7 @@ img {
   min-width: 169px;
   height: 56px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition);
 }
 
 .button-primary:hover,
@@ -394,7 +395,7 @@ img {
   background-color: var(--iris);
   width: 40px;
   height: 40px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition);
 }
 
 .social-icons {
@@ -432,7 +433,7 @@ img {
   width: 100%;
   height: 100%;
   transform: translateY(100%);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--transition);
 }
 
 .portfolio-card:hover .overlay {
@@ -442,7 +443,7 @@ img {
 .portfolio-card {
   flex-basis: calc((100% - 48px) / 3);
   background: var(--white);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow var(--transition);
 }
 
 .portfolio-card:hover {
@@ -474,8 +475,8 @@ img {
 
 .footer-content {
   display: flex;
+  flex-grow: 1;
   gap: 120px;
-  margin-right: 80px;
 }
 
 .footer-description {
@@ -521,12 +522,14 @@ img {
 
 .subscribe-part {
   display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  margin-left: auto;
 }
 .label-wrapper {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-right: 24px;
 }
 .subscribe {
   display: block;
@@ -548,22 +551,27 @@ img {
     sans-serif;
   letter-spacing: 0.04em;
   color: #fff;
+  outline: none;
   background-color: transparent;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-left: 16px;
+  transition: border-color var(--transition);
 }
+.e-sub::placeholder {
+  color: #fff;
+}
+
 .e-sub:hover,
 .e-sub:focus {
   border-color: var(--green);
 }
 .sub-btn {
   display: flex;
-  align-items: flex-start;
-  margin-top: auto;
-  padding: auto;
+  align-items: center;
+  justify-content: center;
   gap: 16px;
   border-radius: 4px;
   padding: 8px 24px;
-  width: 165px;
+  min-width: 165px;
   height: 40px;
   background: #4d5ae5;
   font:
@@ -573,7 +581,9 @@ img {
   text-align: center;
   color: #fff;
   fill: #fff;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition);
 }
 .sub-btn:hover,
 .sub-btn:focus {
@@ -595,6 +605,9 @@ img {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition:
+    opacity var(--transition),
+    visibility var(--transition);
 }
 .backdrop.is-open {
   opacity: 1;
@@ -606,10 +619,7 @@ body:has(.backdrop.is-open) {
 }
 
 .modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   border-radius: 4px;
   width: 408px;
   min-height: 584px;
@@ -618,12 +628,13 @@ body:has(.backdrop.is-open) {
     0 1px 3px 0 rgba(0, 0, 0, 0.12),
     0 2px 1px 0 rgba(0, 0, 0, 0.2);
   background: var(--dairy);
+  padding: 72px 24px 24px 24px;
 }
 
 .modal-close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 24px;
+  right: 24px;
   background: var(--cornflower);
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -633,14 +644,31 @@ body:has(.backdrop.is-open) {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  transition:
+    background-color var(--transition),
+    border var(--transition);
 }
 .modal-close-btn:hover,
 .modal-close-btn:focus {
-  fill: #fff;
   background: var(--ocean);
-  border-radius: 100%;
+  border: none;
 }
+.modal-close-btn:hover .modal-close-icon,
+.modal-close-btn:focus .modal-close-icon {
+  fill: #fff;
+}
+
+.modal-close-icon {
+  fill: var(--navy-blue);
+  transition: fill var(--transition);
+}
+
+.icon-wrapper {
+  position: relative;
+  display: block;
+}
+
 .mdl-par {
   font:
     500 16px / 1.5 "Roboto",
@@ -648,33 +676,13 @@ body:has(.backdrop.is-open) {
   letter-spacing: 0.02em;
   text-align: center;
   color: var(--navy-blue);
-  display: flex;
-  margin: 72px 24px 16px 24px;
+  margin-bottom: 16px;
 }
-.label-form {
+.modal-form {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   flex-direction: column;
-  gap: 8px;
-  border-radius: 4px;
-  width: 360px;
-  height: 336px;
-  margin: auto;
 }
 
-.name-input:hover,
-.name-input:focus + .icon-phone {
-  fill: var(--iris);
-}
-.name-input:hover,
-.name-input:focus + .icon-email {
-  fill: var(--iris);
-}
-.name-input:hover,
-.name-input:focus + .icon-person {
-  fill: var(--iris);
-}
 .name-label {
   font:
     400 12px / 1.16667 "Roboto",
@@ -685,35 +693,46 @@ body:has(.backdrop.is-open) {
   margin-bottom: 4px;
 }
 .name-wrapper {
+  position: relative;
   margin-bottom: 8px;
 }
 .name-input {
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
-  width: 360px;
+  width: 100%;
+  outline: none;
   height: 40px;
   padding-left: 38px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color var(--transition);
+  background-color: transparent;
 }
-.icon-person {
-  position: absolute;
-  top: 138px;
-  left: 40px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.name-input:focus {
+  border-color: var(--iris);
 }
-.icon-phone {
-  position: absolute;
-  top: 204px;
-  left: 40px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.name-input:focus + .icon-person,
+.name-input:focus + .icon-phone,
+.name-input:focus + .icon-email {
+  fill: var(--iris);
 }
+
+.icon-person,
+.icon-phone,
 .icon-email {
   position: absolute;
-  top: 270px;
-  left: 40px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 16px;
+  fill: var(--navy-blue);
+  transition: fill var(--transition);
+  pointer-events: none;
 }
+
 .text-input {
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  resize: none;
+  width: 100%;
+  height: 120px;
   font:
     400 12px / 1.16 "Roboto",
     sans-serif;
@@ -721,65 +740,64 @@ body:has(.backdrop.is-open) {
   color: rgba(46, 47, 66, 0.4);
   padding-left: 16px;
   padding-top: 8px;
+  outline: none;
+  transition: border-color var(--transition);
+  background-color: transparent;
 }
-.text-wrapper {
-  border: 1px solid rgba(46, 47, 66, 0.4);
-  border-radius: 4px;
-  resize: none;
-  width: 360px;
-  height: 120px;
+.text-input:focus {
+  border-color: var(--iris);
 }
-.hidden-checkbox {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+.text-input::placeholder {
+  font:
+    400 12px / 1.16667 "Roboto",
+    sans-serif;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+}
+
+.checkb-wrapper {
+  margin-top: 16px;
+  margin-bottom: 24px;
 }
 .custom-checkbox {
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 .checkbox-visual {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   border-radius: 2px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   cursor: pointer;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    background-color var(--transition),
+    border var(--transition);
 }
-.checkb-wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-}
-.hidden-checkbox:checked + .checkbox-visual .check-icon {
-  display: block;
-  border-radius: 2px;
+.visually-hidden:checked + .checkbox-visual {
   background-color: var(--ocean);
   border: none;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.hidden-checkbox:checked + .checkbox-visual {
-  background-color: var(--ocean);
-  border: none;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.visually-hidden:checked + .checkbox-visual .check-icon {
+  opacity: 1;
 }
 .check-icon {
-  display: none;
-  width: 10px;
-  height: 8px;
   fill: var(--cloud);
+  opacity: 0;
+  transition: opacity var(--transition);
 }
 .policy-txt {
   font:
-    400 12px / 1.16 "Roboto",
+    400 12px / 1.33 "Roboto",
     sans-serif;
   letter-spacing: 0.04em;
   color: var(--light-slate);
+  user-select: none;
 }
 .policy {
   font:
@@ -790,13 +808,11 @@ body:has(.backdrop.is-open) {
   color: var(--iris);
 }
 .modal-button {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
+  display: block;
   cursor: pointer;
   border-radius: 4px;
   padding: 16px 32px;
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   background: var(--iris);
@@ -805,16 +821,12 @@ body:has(.backdrop.is-open) {
     sans-serif;
   letter-spacing: 0.04em;
   color: #fff;
-  display: flex;
-  padding: 16px 32px;
-  position: absolute;
-  left: 119px;
-  bottom: 24px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  margin: 0 auto;
+  transition: background-color var(--transition);
 }
 .modal-button:hover,
 .modal-button:focus {
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   background: var(--ocean);
 }
 /* #endregion */
