@@ -522,7 +522,7 @@ img {
 
 .subscribe-part {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 24px;
   margin-left: auto;
 }
@@ -559,7 +559,10 @@ img {
 .e-sub::placeholder {
   color: #fff;
 }
-
+.btn-wrapper {
+  display: block;
+  padding-top: 40px;
+}
 .e-sub:hover,
 .e-sub:focus {
   border-color: var(--green);
